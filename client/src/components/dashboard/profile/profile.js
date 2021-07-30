@@ -31,7 +31,7 @@ const UserProfile = () => {
         className='mt-3 article_form'
         style={{ maxWidth: '250px' }}
         onSubmit={formik.handleSubmit}>
-        <div clas='form-group'>
+        <div className='form-group'>
           <TextField
             style={{ width: '100%' }}
             name='firstname'
@@ -42,7 +42,7 @@ const UserProfile = () => {
           />
         </div>
 
-        <div clas='form-group'>
+        <div className='form-group'>
           <TextField
             style={{ width: '100%' }}
             name='lastname'
@@ -53,7 +53,7 @@ const UserProfile = () => {
           />
         </div>
 
-        <div clas='form-group'>
+        <div className='form-group'>
           <TextField
             style={{ width: '100%' }}
             name='age'
