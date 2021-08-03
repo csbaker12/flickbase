@@ -129,7 +129,7 @@ export const accountVerify = (token) => {
       if (user) {
         dispatch(users.accountVerify());
       }
-      dispatch(users.successGlobal('Account verified !!'));
+      dispatch(users.successGlobal('Account verified!'));
     } catch (error) {
       dispatch(users.errorGlobal(error.response.data.message));
     }

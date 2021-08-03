@@ -35,7 +35,7 @@ const articleSchema = mongoose.Schema({
       validator: function (array) {
         return array.length >= 2;
       },
-      message: 'you must add at least three',
+      message: 'you must add at least three actors',
     },
   },
   status: {

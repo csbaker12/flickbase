@@ -145,9 +145,9 @@ router.route('/verify').get(async (req, res) => {
   try {
     const token = User.validateToken(req.query.validation);
     const user = await User.findById(token._id);
-    if (!user) return res.status(400).json({ message: 'User not found !!' });
+    if (!user) return res.status(400).json({ message: 'User not found!' });
     if (user.verified)
-      return res.status(400).json({ message: 'Already verified !!' });
+      return res.status(400).json({ message: 'Already verified!' });
 
     user.verified = true;
 

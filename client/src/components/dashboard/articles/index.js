@@ -156,7 +156,7 @@ const Articles = (props) => {
           <Modal.Header closeButton>
             <Modal.Title>Are you sure?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>There is no going back</Modal.Body>
+          <Modal.Body>Changes cannot be undone</Modal.Body>
           <Modal.Footer>
             <Button variant='secondary' onClick={handleClose}>
               Oops, close this

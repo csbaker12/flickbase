@@ -14,7 +14,7 @@ const AddCategories = () => {
     enableReinitialize: true,
     initialValues: { name: '' },
     validationSchema: Yup.object({
-      name: Yup.string().required('The name is required'),
+      name: Yup.string().required('Name is required'),
     }),
     onSubmit: (values, { resetForm }) => {
       dispatch(addCategory(values));

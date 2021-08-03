@@ -16,9 +16,9 @@ const Auth = (props) => {
     initialValues: { email: '', password: '' },
     validationSchema: Yup.object({
       email: Yup.string()
-        .required('Sorry the email is required')
+        .required('Email is required')
         .email('This is not a valid email'),
-      password: Yup.string().required('Sorry the password is required'),
+      password: Yup.string().required('Password is required'),
     }),
     onSubmit: (values, { resetForm }) => {
       handleSubmit(values);

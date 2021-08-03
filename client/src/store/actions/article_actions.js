@@ -39,7 +39,7 @@ export const addArticle = (article) => {
         getAuthHeader()
       );
       dispatch(articles.addArticle(request.data));
-      dispatch(articles.successGlobal('Good boi!'));
+      dispatch(articles.successGlobal('Article Added!'));
     } catch (error) {
       dispatch(articles.errorGlobal(error.response.data.message));
     }
@@ -81,7 +81,7 @@ export const changeStatusArticle = (status, _id) => {
       let position = state.findIndex((art) => art._id === _id);
       state[position] = art;
       dispatch(articles.updateArticleStatus(state));
-      dispatch(articles.successGlobal('hell yeah brother'));
+      dispatch(articles.successGlobal('Article Status Updated'));
     } catch (error) {
       dispatch(articles.errorGlobal(error.response.data.message));
     }
@@ -93,7 +93,7 @@ export const removeArticle = (id) => {
     try {
       await axios.delete(`/api/articles/admin/${id}`, getAuthHeader());
       dispatch(articles.removeArticle());
-      dispatch(articles.successGlobal('Nailed it she a goner'));
+      dispatch(articles.successGlobal('Article Deleted'));
     } catch (error) {
       dispatch(articles.errorGlobal(error.response.data.message));
     }
@@ -123,7 +123,7 @@ export const updateArticle = (article, id) => {
         getAuthHeader()
       );
       dispatch(articles.getArticle(newArticle.data));
-      dispatch(articles.successGlobal('Nailed er bud'));
+      dispatch(articles.successGlobal('Article Updated'));
     } catch (error) {
       dispatch(articles.errorGlobal('Error, try again'));
     }
