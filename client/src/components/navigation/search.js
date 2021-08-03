@@ -13,7 +13,7 @@ const NavSearch = (props) => {
     validationSchema: Yup.object({
       keywords: Yup.string()
         .required('This is required')
-        .min(2, 'keyword too short'),
+        .min(2, 'Keyword too short'),
     }),
     onSubmit: (values) => {
       dispatch(getSearchNavResults(1, 5, values.keywords));
