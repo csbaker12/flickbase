@@ -14,6 +14,10 @@ import {
   REMOVE_ARTICLE,
   CHANGE_USER_EMAIL,
   UPDATE_USER_PROFILE,
+  VERIFY_ACCOUNT,
+  GET_CATEGORIES,
+  ADD_CATEGORY,
+  NAV_SEARCH,
 } from '../types';
 
 /////////// articles //////////////
@@ -50,6 +54,20 @@ export const removeArticle = () => ({
   type: REMOVE_ARTICLE,
 });
 
+export const getCategories = (categories) => ({
+  type: GET_CATEGORIES,
+  payload: categories,
+});
+
+export const addCategory = (categories) => ({
+  type: ADD_CATEGORY,
+  payload: categories,
+});
+
+export const navSearch = (articles) => ({
+  type: NAV_SEARCH,
+  payload: articles,
+});
 /////// notification /////////////
 
 export const errorGlobal = (msg) => ({
@@ -89,6 +107,10 @@ export const signOut = () => ({
 export const changeUserEmail = (data) => ({
   type: CHANGE_USER_EMAIL,
   payload: data,
+});
+
+export const accountVerify = () => ({
+  type: VERIFY_ACCOUNT,
 });
 
 ///////// site ////////

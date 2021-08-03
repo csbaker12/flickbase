@@ -13,3 +13,7 @@ export const UPDATE_ARTICLE_STATUS = 'update_article_status';
 export const REMOVE_ARTICLE = 'remove_article';
 export const CHANGE_USER_EMAIL = 'change_user_email';
 export const UPDATE_USER_PROFILE = 'update_user_profile';
+export const VERIFY_ACCOUNT = 'verify_account';
+export const GET_CATEGORIES = 'get_categories';
+export const ADD_CATEGORY = 'add_category';
+export const NAV_SEARCH = 'nav_search';

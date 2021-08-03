@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getAdminArticle,
   updateArticle,
+  getCategories,
 } from '../../../store/actions/article_actions';
+import { clearCurrentArticle } from '../../../store/actions/index';
 import { validation, formValues } from './validationSchema';
 import Loader from '../../../utils/loader';
-import { clearCurrentArticle } from '../../../store/actions/index';
+
 import WYSIWYG from '../../../utils/forms/wysiwyg';
 
 import {
@@ -65,16 +67,17 @@ const EditArticle = (props) => {
   });
 
   useEffect(() => {
-    // if (notifications && notifications.success) {
-    //   props.history.push('/dashboard/articles');
+    // if(notifications && notifications.success){
+    //     props.history.push('/dashboard/articles');
     // }
-    // if (notifications && notifications.error) {
+    // if(notifications && notifications.error){
     setIsSubmitting(false);
-    // }
+    //   }
   }, [notifications, props.history]);
 
   //// edit ///
   useEffect(() => {
+    dispatch(getCategories());
     dispatch(getAdminArticle(props.match.params.id));
   }, [dispatch, props.match.params]);
 
@@ -84,14 +87,13 @@ const EditArticle = (props) => {
       setEditContent(articles.current.content);
     }
   }, [articles]);
+  /// edit ///
 
   useEffect(() => {
     return () => {
       dispatch(clearCurrentArticle());
     };
   }, [dispatch]);
-
-  /// edit ///
 
   return (
     <AdminLayout section='Add article'>
@@ -208,6 +210,34 @@ const EditArticle = (props) => {
               {...errorHelper(formik, 'director')}
             />
           </div>
+
+          <FormControl variant='outlined'>
+            <h5>Select a category</h5>
+            <Select
+              name='category'
+              {...formik.getFieldProps('category')}
+              error={
+                formik.errors.category && formik.touched.category ? true : false
+              }>
+              <MenuItem value=''>
+                <em>None</em>
+              </MenuItem>
+              {articles.categories
+                ? articles.categories.map((item) => (
+                    <MenuItem key={item._id} value={item._id}>
+                      {item.name}
+                    </MenuItem>
+                  ))
+                : null}
+            </Select>
+            {formik.errors.category && formik.touched.category ? (
+              <FormHelperText error={true}>
+                {formik.errors.category}
+              </FormHelperText>
+            ) : null}
+          </FormControl>
+
+          <Divider className='mt-3 mb-3' />
 
           <FormControl variant='outlined'>
             <h5>Select a status</h5>

@@ -25,7 +25,6 @@ const Home = () => {
 
   return (
     <div>
-      <div>CARROUSEL</div>
       <Grid container spacing={2} className='article_card'>
         {articles && articles.articles
           ? articles.articles.map((item) => (

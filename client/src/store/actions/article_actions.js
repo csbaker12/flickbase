@@ -46,12 +46,13 @@ export const addArticle = (article) => {
   };
 };
 
-export const getPaginateArticles = (page = 1, limit = 10) => {
+export const getPaginateArticles = (page = 1, limit = 10, keywords = '') => {
   return async (dispatch) => {
     try {
       const request = await axios.post(
         `/api/articles/admin/paginate`,
         {
+          keywords,
           page,
           limit,
         },
@@ -125,6 +126,49 @@ export const updateArticle = (article, id) => {
       dispatch(articles.successGlobal('Nailed er bud'));
     } catch (error) {
       dispatch(articles.errorGlobal('Error, try again'));
+    }
+  };
+};
+
+export const getCategories = () => {
+  return async (dispatch) => {
+    try {
+      const categories = await axios.get('/api/articles/categories');
+      dispatch(articles.getCategories(categories.data));
+    } catch (error) {
+      dispatch(articles.errorGlobal('Error, try again'));
+    }
+  };
+};
+
+export const addCategory = (values) => {
+  return async (dispatch, getState) => {
+    try {
+      const category = await axios.post(
+        `/api/articles/categories`,
+        values,
+        getAuthHeader()
+      );
+      let newState = [...getState().articles.categories, category.data];
+      dispatch(articles.addCategory(newState));
+      dispatch(articles.successGlobal('Category added!'));
+    } catch (error) {
+      dispatch(articles.errorGlobal('Error, try again'));
+    }
+  };
+};
+
+export const getSearchNavResults = (page = 1, limit = 5, keywords = '') => {
+  return async (dispatch) => {
+    try {
+      const request = await axios.post(`/api/articles/user/search`, {
+        keywords,
+        page,
+        limit,
+      });
+      dispatch(articles.navSearch(request.data));
+    } catch (error) {
+      dispatch(articles.errorGlobal(error.response.data.message));
     }
   };
 };

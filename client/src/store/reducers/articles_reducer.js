@@ -5,6 +5,9 @@ import {
   ADD_ARTICLE,
   GET_ADMIN_ARTICLES,
   UPDATE_ARTICLE_STATUS,
+  GET_CATEGORIES,
+  ADD_CATEGORY,
+  NAV_SEARCH,
 } from '../types';
 
 export default function articleReducer(state = {}, action) {
@@ -27,6 +30,12 @@ export default function articleReducer(state = {}, action) {
           docs: action.payload,
         },
       };
+    case GET_CATEGORIES:
+      return { ...state, categories: action.payload };
+    case ADD_CATEGORY:
+      return { ...state, categories: action.payload };
+    case NAV_SEARCH:
+      return { ...state, navsearch: action.payload };
     default:
       return state;
   }

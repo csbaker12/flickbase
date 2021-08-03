@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { TextField, Divider, Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { updateUserProfile } from '../../../store/actions/users_actions';
 
 const UserProfile = () => {

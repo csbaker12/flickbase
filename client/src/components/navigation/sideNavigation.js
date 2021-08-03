@@ -15,6 +15,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import NavSearch from './search';
 
 const SideDrawer = ({ users, signOutUser }) => {
   const [state, setState] = useState(false);
@@ -23,13 +24,7 @@ const SideDrawer = ({ users, signOutUser }) => {
     <>
       <DehazeIcon className='drawer_btn' onClick={() => setState(true)} />
       <Drawer anchor={'right'} open={state} onClose={() => setState(false)}>
-        <form style={{ margin: '20px' }}>
-          <TextField
-            id='outlined-basic'
-            label='Search movie'
-            variant='outlined'
-          />
-        </form>
+        <NavSearch closeDrawer={() => setState(false)} />
         <Divider />
         <List>
           <ListItem

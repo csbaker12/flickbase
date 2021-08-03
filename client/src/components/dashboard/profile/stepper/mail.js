@@ -4,14 +4,7 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { changeEmail } from '../../../../store/actions/users_actions';
 
-import {
-  TextField,
-  Button,
-  Stepper,
-  Step,
-  StepLabel,
-  useScrollTrigger,
-} from '@material-ui/core';
+import { TextField, Button, Stepper, Step, StepLabel } from '@material-ui/core';
 
 const EmailStepper = ({ user }) => {
   const [activeStep, setActiveStep] = useState(0);
